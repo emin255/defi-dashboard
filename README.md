@@ -1,5 +1,12 @@
 # DeFi Dashboard
 
+## Canlı Demo
+https://defi-dashboard-sable.vercel.app
+
+## Ekran Görüntüsü
+![DeFi Dashboard](./public/screenshot.png)
+
+## Açıklama
 Ethereum ekosistemini takip etmek için geliştirilmiş, AI destekli bir Web3 dashboard uygulaması. Canlı piyasa verileri, on-chain sorgular ve yapay zeka destekli piyasa analizi tek bir arayüzde sunulmaktadır.
 
 ## Özellikler
