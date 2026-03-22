@@ -1,37 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# DeFi Dashboard
 
-## Getting Started
+Ethereum ekosistemini takip etmek için geliştirilmiş, AI destekli bir Web3 dashboard uygulaması. Canlı piyasa verileri, on-chain sorgular ve yapay zeka destekli piyasa analizi tek bir arayüzde sunulmaktadır.
 
-First, run the development server:
+## Özellikler
 
+- Canlı token fiyatları ve 24 saatlik değişimler (BTC, ETH, SOL)
+- Cointelegraph RSS üzerinden son kripto haberleri
+- DeFiLlama API ile top 5 DeFi protokolünün TVL verileri
+- Alchemy RPC ile Ethereum mainnet üzerinden gerçek zamanlı gas fiyatı ve block bilgisi
+- Herhangi bir Ethereum cüzdan adresinin bakiye sorgulaması
+- Fiyat, TVL ve haber verilerini birleştiren Claude AI piyasa analizi
+
+## Teknolojiler
+
+- Next.js 16 (App Router)
+- Anthropic Claude API (claude-haiku-4-5)
+- Alchemy Web3 API
+- CoinGecko API
+- DeFiLlama API
+- Cointelegraph RSS
+
+## Kurulum
+
+Repoyu klonla:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/kullanici-adi/defi-dashboard.git
+cd defi-dashboard
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+`.env.local` dosyası oluştur:
+```
+ANTHROPIC_API_KEY=sk-ant-...
+ALCHEMY_API_KEY=...
+```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Geliştirme sunucusunu başlat:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Tarayıcıda `http://localhost:3000` adresini aç.
 
-## Learn More
+## API Kaynakları
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# defi-dashboard
+| Veri | Kaynak | Kimlik Doğrulama |
+|------|--------|-----------------|
+| Token fiyatları | CoinGecko | Gerekmez |
+| DeFi haberleri | Cointelegraph RSS | Gerekmez |
+| TVL verileri | DeFiLlama | Gerekmez |
+| On-chain veriler | Alchemy | API key |
+| AI analizi | Anthropic | API key |
