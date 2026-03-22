@@ -1,12 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-function fetchData(){
-  fetch('/api/onchain').then(r => r.json()).then(setOnchain);
-    fetch('/api/tvl').then(r => r.json()).then(d => setTvl(d.protocols));
-    fetch('/api/prices').then(r => r.json()).then(setPrices);
-    fetch('/api/news').then(r => r.json()).then(d => setNews(d.news));
-}
+
 export default function Home() {
   const [prices, setPrices] = useState(null);
   const [news, setNews] = useState(null);
@@ -15,7 +10,12 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [onchain, setOnchain] = useState(null);
   const [walletInput, setWalletInput] = useState('');
-
+  function fetchData(){
+  fetch('/api/onchain').then(r => r.json()).then(setOnchain);
+    fetch('/api/tvl').then(r => r.json()).then(d => setTvl(d.protocols));
+    fetch('/api/prices').then(r => r.json()).then(setPrices);
+    fetch('/api/news').then(r => r.json()).then(d => setNews(d.news));
+  }
   const analyze = async () => {
     setLoading(true);
     const res = await fetch('/api/analyze');
