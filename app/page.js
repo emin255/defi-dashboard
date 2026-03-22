@@ -1,7 +1,12 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-
+function fetchData(){
+  fetch('/api/onchain').then(r => r.json()).then(setOnchain);
+    fetch('/api/tvl').then(r => r.json()).then(d => setTvl(d.protocols));
+    fetch('/api/prices').then(r => r.json()).then(setPrices);
+    fetch('/api/news').then(r => r.json()).then(d => setNews(d.news));
+}
 export default function Home() {
   const [prices, setPrices] = useState(null);
   const [news, setNews] = useState(null);
@@ -20,11 +25,14 @@ export default function Home() {
   };
 
   useEffect(() => {
-    fetch('/api/onchain').then(r => r.json()).then(setOnchain);
-    fetch('/api/tvl').then(r => r.json()).then(d => setTvl(d.protocols));
-    fetch('/api/prices').then(r => r.json()).then(setPrices);
-    fetch('/api/news').then(r => r.json()).then(d => setNews(d.news));
-  }, []);
+  fetchData();
+  const dataInterval = setInterval(fetchData, 60000);
+  const aiInterval = setInterval(analyze, 600000);
+  return () => {
+    clearInterval(dataInterval);
+    clearInterval(aiInterval);
+  };
+}, []);
 
   const tokenColors = { bitcoin: '#F7931A', ethereum: '#627EEA', solana: '#9945FF' };
   const tokenSymbols = { bitcoin: 'BTC', ethereum: 'ETH', solana: 'SOL' };

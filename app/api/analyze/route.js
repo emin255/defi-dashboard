@@ -12,19 +12,27 @@ export async function GET() {
   const tvl = await tvlRes.json();
 
     const prompt = `
-  Aşağıdaki kripto para verilerini analiz et ve kısa bir piyasa yorumu yaz (4-5 cümle, Türkçe):
+      Sen deneyimli bir DeFi analistisin. Aşağıdaki verileri inceleyip profesyonel bir piyasa analizi yaz.
 
-  TOKEN FİYATLARI:
-  ${Object.entries(prices).map(([t, d]) => `${t}: $${d.price} (${d.change}%)`).join('\n')}
+      TOKEN FİYATLARI:
+      ${Object.entries(prices).map(([t, d]) => `${t}: $${d.price} (24s: ${d.change}%)`).join('\n')}
 
-  TOP DeFi PROTOKOLLER (TVL):
-  ${tvl.protocols.map(p => `${p.name}: $${(p.tvl / 1e9).toFixed(2)}B (${p.change24h}%)`).join('\n')}
+      TOP DeFi PROTOKOLLER (TVL):
+      ${tvl.protocols.map(p => `${p.name}: $${(p.tvl / 1e9).toFixed(2)}B (24s: ${p.change24h}%)`).join('\n')}
 
-  SON HABERLER:
-  ${news.news.map((n, i) => `${i + 1}. ${n.title}`).join('\n')}
+      SON HABERLER:
+      ${news.news.map((n, i) => `${i + 1}. ${n.title}`).join('\n')}
 
-  Fiyat hareketleri, TVL değişimleri ve haberler arasındaki bağlantıya dikkat et.
-    `;
+      Analizini şu üç başlık altında yaz:
+
+      🔴 RİSKLER: Dikkat edilmesi gereken tehlike sinyalleri neler? Fiyat düşüşleri, TVL azalması, negatif haberler varsa belirt.
+
+      🟢 FIRSATLAR: Pozitif sinyaller neler? Hangi protokol veya token öne çıkıyor?
+
+      ⚡ ÖZET: Tek cümleyle bugünkü piyasa durumu ne?
+
+      Her başlık için 2-3 cümle yaz. Gereksiz giriş cümlesi yazma, direkt konuya gir.
+      `;
 
     const response =
       await fetch('https://api.anthropic.com/v1/messages', {
