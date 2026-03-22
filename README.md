@@ -18,7 +18,7 @@ Ethereum ekosistemini takip etmek için geliştirilmiş, AI destekli bir Web3 da
 - Herhangi bir Ethereum cüzdan adresinin bakiye sorgulaması
 - Fiyat, TVL ve haber verilerini birleştiren Claude AI piyasa analizi
 - Her 10 dakikada bir AI analizi değişimlere göre güncelleniyor
-
+tam
 ## Teknolojiler
 
 - Next.js 16 (App Router)
@@ -32,7 +32,7 @@ Ethereum ekosistemini takip etmek için geliştirilmiş, AI destekli bir Web3 da
 
 Repoyu klonla:
 ```bash
-git clone https://github.com/kullanici-adi/defi-dashboard.git
+git clone https://github.com/emin255/defi-dashboard.git
 cd defi-dashboard
 npm install
 ```

@@ -11,7 +11,7 @@ export async function GET() {
   const news = await newsRes.json();
   const tvl = await tvlRes.json();
 
-    const prompt = `
+    const prompt = ` 
       Sen deneyimli bir DeFi analistisin. Aşağıdaki verileri inceleyip profesyonel bir piyasa analizi yaz.
 
       TOKEN FİYATLARI:
