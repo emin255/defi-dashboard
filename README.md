@@ -17,6 +17,7 @@ Ethereum ekosistemini takip etmek için geliştirilmiş, AI destekli bir Web3 da
 - Alchemy RPC ile Ethereum mainnet üzerinden gerçek zamanlı gas fiyatı ve block bilgisi
 - Herhangi bir Ethereum cüzdan adresinin bakiye sorgulaması
 - Fiyat, TVL ve haber verilerini birleştiren Claude AI piyasa analizi
+- Her 10 dakikada bir AI analizi değişimlere göre güncelleniyor
 
 ## Teknolojiler
 
