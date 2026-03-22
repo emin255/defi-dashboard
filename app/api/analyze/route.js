@@ -1,9 +1,10 @@
 export async function GET() {
+  const base = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
   try{
     const [pricesRes, newsRes, tvlRes] = await Promise.all([
-    fetch('http://localhost:3000/api/prices'),
-    fetch('http://localhost:3000/api/news'),
-    fetch('http://localhost:3000/api/tvl'),
+    fetch(base+'/api/prices'),
+    fetch(base+'/api/news'),
+    fetch(base+'/api/tvl'),
   ]);
 
   const prices = await pricesRes.json();
@@ -49,7 +50,7 @@ export async function GET() {
   }
   catch(e){
     console.error(e);
-    return Response.json({ error: e.message });
+    return Response.json({ error: e.message }, { status: 500 });
   }
   
 }

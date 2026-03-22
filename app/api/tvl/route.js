@@ -1,9 +1,11 @@
 export async function GET() {
   try{
       const res = await fetch('https://api.llama.fi/protocols');
+      if (!res.ok) {
+        throw new Error(`DeFiLlama API hatası: ${res.status}`);
+      }
       const data = await res.json();
 
-      // En yüksek TVL'e sahip ilk 5 protokol
       const top5 = data
         .sort((a, b) => b.tvl - a.tvl)
         .slice(0, 5)
@@ -18,7 +20,7 @@ export async function GET() {
   }
   catch(e){
     console.error(e);
-    return Response.json({ error: e.message });
+    return Response.json({ error: e.message }, { status: 500 });
   }
   
 }

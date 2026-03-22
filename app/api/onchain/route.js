@@ -39,7 +39,7 @@ export async function GET(request) {
   }
   catch(e){
     console.error(e);
-    return Response.json({ error: e.message });
+    return Response.json({ error: e.message }, { status: 500 });
   }
   
 }

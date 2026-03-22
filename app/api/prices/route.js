@@ -3,6 +3,9 @@ export async function GET() {
     const res = await fetch(
     'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana&vs_currencies=usd&include_24hr_change=true'
     );
+    if(!res.ok){
+      throw new Error('CoinGecko API hatası ${res.status}');
+    }
     const data = await res.json();
 
     return Response.json({
@@ -22,6 +25,6 @@ export async function GET() {
   }
   catch(e){
     console.error(e);
-    return Response.json({ error: e.message });
+    return Response.json({ error: e.message }, { status: 500 });
   }
 }

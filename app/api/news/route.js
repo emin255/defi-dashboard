@@ -3,6 +3,9 @@ export async function GET() {
     const res = await fetch('https://cointelegraph.com/rss', {
       headers: { 'User-Agent': 'Mozilla/5.0' }
     });
+    if (!res.ok) {
+      throw new Error(`RSS API hatası: ${res.status}`);
+    }
     const xml = await res.text();
 
     const titleMatches = [...xml.matchAll(/<title>(.*?)<\/title>/gs)];
